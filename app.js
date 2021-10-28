@@ -6,8 +6,7 @@ const PORT = process.env.PORT || 8877;
 
 app.get('/', (request, response) =>{
 
-
-  return response.send("A rota disponível para consulta é /estados")
+  return response.send("As rotas disponiveis para consulta são /estados para listagem completa e /estadoEspecifico/estado para listagem parametrizada")
 })
 
 app.get('/estados', (request, response) =>{
@@ -16,21 +15,11 @@ app.get('/estados', (request, response) =>{
   })('https://queimadas.dgi.inpe.br/home/download?id=focos_brasil&time=48h&outputFormat=json&utm_source=landing-page&utm_medium=landing-page&utm_campaign=dados-abertos&utm_content=focos_brasil_48h');
 });
 
-app.get('/estadoEspecifico', (request, response) =>{
-  //exemplo = /estadoEspecifico/?estado=Acre
-  let estado = request.query["estado"];
-  let json;
-  if(estado){
-    json = response.send("ESTADO NOVO É "+ estado);
-  }else
-    json = response.send("ESTADO É NENHUM");
+app.get('/estadoEspecifico/:estado', (request, response) =>{
 
   (async (url) => {
-    // return response.send
-    const retorno = await getEstadoEspecifico(url);
+    return response.send(await getEstadoEspecifico(url));
   })('https://queimadas.dgi.inpe.br/home/download?id=focos_brasil&time=48h&outputFormat=json&utm_source=landing-page&utm_medium=landing-page&utm_campaign=dados-abertos&utm_content=focos_brasil_48h');
-  // return retorno;
-  return json;
 });
 
 app.listen(PORT, ()=>{

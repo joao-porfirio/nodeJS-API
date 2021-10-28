@@ -1,5 +1,5 @@
 const getEstadoEspecifico = (url) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject, array, arrayFiltrado) => {
     const http = require('http'),
     https = require('https');
     let client = http;
@@ -10,11 +10,16 @@ const getEstadoEspecifico = (url) => {
     client.get(url, (resp) => {
       let data = '';
       resp.on('data', (chunk) => {
-          data += chunk;
+        data += chunk;
       });
 
       resp.on('end', () => {
-        resolve(JSON.parse(data).features.properties);
+        // array = JSON.stringify(data);
+        // arrayFiltrado = JSON.parse(data.features)
+        // arrayFiltrado = array.filter(x => x.id === "focos_brasil_ontem_hoje_ref.2620e1b4-70f8-31dc-8ee1-4bac7888fc55")
+        // var result = data.filter(x => x.estado === "BAHIA" );
+        resolve(JSON.parse(data).features);
+
       })
 
     }).on("error", (err) => {

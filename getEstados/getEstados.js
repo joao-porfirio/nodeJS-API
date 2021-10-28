@@ -10,11 +10,12 @@ const getEstados = (url) => {
     client.get(url, (resp) => {
       let data = '';
       resp.on('data', (chunk) => {
+        resolve(JSON.parse(data).features)
           data += chunk;
       });
 
       resp.on('end', () => {
-          resolve(JSON.parse(data).features);
+        resolve(JSON.parse(data).features);
       });
 
     }).on("error", (err) => {
