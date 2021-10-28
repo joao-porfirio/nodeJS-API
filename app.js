@@ -2,6 +2,7 @@ const express = require('express');
 const getEstados = require('./getEstados/getEstados');
 const getEstadoEspecifico = require('./getEstados/getEstadoEspecifico');
 const app = express();
+const PORT = process.env.PORT || 8877;
 
 app.get('/', (request, response) =>{
 
@@ -32,4 +33,5 @@ app.get('/estadoEspecifico', (request, response) =>{
   return json;
 });
 
-app.listen(3333);
+app.listen(PORT, ()=>{
+})
