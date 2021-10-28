@@ -10,7 +10,6 @@ const getEstados = (url) => {
     client.get(url, (resp) => {
       let data = '';
       resp.on('data', (chunk) => {
-        resolve(JSON.parse(data).features)
           data += chunk;
       });
 
