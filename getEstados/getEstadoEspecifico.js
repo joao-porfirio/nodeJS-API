@@ -18,8 +18,8 @@ const getEstadoEspecifico = (url) => {
         // arrayFiltrado = JSON.parse(data.features)
         // arrayFiltrado = array.filter(x => x.id === "focos_brasil_ontem_hoje_ref.2620e1b4-70f8-31dc-8ee1-4bac7888fc55")
         // var result = data.filter(x => x.estado === "BAHIA" );
-        resolve(JSON.parse(data).features);
-
+        const estado = JSON.parse(data).features[0].properties.estado
+        resolve({estado}); 
       })
 
     }).on("error", (err) => {
