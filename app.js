@@ -1,6 +1,5 @@
 const express = require('express');
 const getEstados = require('./getEstados/getEstados');
-const getEstadoEspecifico = require('./getEstados/getEstadoEspecifico');
 const app = express();
 const PORT = process.env.PORT || 8877;
 
