@@ -12,14 +12,14 @@ app.get('/', (request, response) =>{
 app.get('/estados', (request, response) =>{
   (async (url) => {
     return response.send(await getEstados(url));
-  })('https://queimadas.dgi.inpe.br/home/download?id=focos_brasil&time=48h&outputFormat=json&utm_source=landing-page&utm_medium=landing-page&utm_campaign=dados-abertos&utm_content=focos_brasil_48h');
+  })('https://queimadas.dgi.inpe.br/home/download?id=focos_brasil&time=24h&outputFormat=json&utm_source=landing-page&utm_medium=landing-page&utm_campaign=dados-abertos&utm_content=focos_brasil_24h');
 });
 
 app.get('/estadoEspecifico/:estado', (request, response) =>{
 
   (async (url) => {
     return response.send(await getEstadoEspecifico(url));
-  })('https://queimadas.dgi.inpe.br/home/download?id=focos_brasil&time=48h&outputFormat=json&utm_source=landing-page&utm_medium=landing-page&utm_campaign=dados-abertos&utm_content=focos_brasil_48h');
+  })('https://queimadas.dgi.inpe.br/home/download?id=focos_brasil&time=24h&outputFormat=json&utm_source=landing-page&utm_medium=landing-page&utm_campaign=dados-abertos&utm_content=focos_brasil_24h');
 });
 
 app.listen(PORT, ()=>{
